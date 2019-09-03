@@ -13,13 +13,12 @@ func NewServer() Server {
 	return Server{}
 }
 
-func (s *Server) Init() {
+func (s *Server) Init(port string) {
 	log.Println("Initializing server....")
-	s.port = ":8000"
-
+	s.port = ":" + port
 }
 
 func (s *Server) Start() {
-	log.Println("Starting server....")
+	log.Println("Starting server on port " + s.port)
 	http.ListenAndServe(s.port, nil)
 }
